@@ -8,8 +8,14 @@
  * EXAMPLE
  * trimProperties({ name: '  jane  ' }) // returns a new object { name: 'jane' }
  */
+
 function trimProperties(obj) {
   // ✨ implement
+  let objCopy = {
+    ...obj,
+  };
+  Object.keys(objCopy).forEach((key) => (objCopy[key] = objCopy[key].trim()));
+  return objCopy;
 }
 
 /**
@@ -22,6 +28,8 @@ function trimProperties(obj) {
  */
 function trimPropertiesMutation(obj) {
   // ✨ implement
+  Object.keys(obj).forEach((key) => (obj[key] = obj[key].trim()));
+  return obj;
 }
 
 /**
