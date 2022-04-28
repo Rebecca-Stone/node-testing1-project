@@ -41,7 +41,18 @@ function trimPropertiesMutation(obj) {
  * findLargestInteger([{ integer: 1 }, { integer: 3 }, { integer: 2 }]) // returns 3
  */
 function findLargestInteger(integers) {
-  // ✨ implement
+  // looking through each integers[index]
+  let largest = 0;
+  integers.forEach((obj) => {
+    if (obj.integer > largest) {
+      largest = obj.integer;
+    }
+  });
+  return largest;
+  // compare that [index] key to the last
+  // if it's greater than the last
+  // compare it to the next
+  // return the greatest integer of the array
 }
 
 class Counter {
@@ -51,6 +62,9 @@ class Counter {
    */
   constructor(initialNumber) {
     // ✨ initialize whatever properties are needed
+    // this.zero = 0;
+    this.initialNumber = initialNumber;
+    this.currentCount = null;
   }
 
   /**
@@ -65,7 +79,24 @@ class Counter {
    * counter.countDown() // returns 0
    * counter.countDown() // returns 0
    */
-  countDown() {
+  countDown(count) {
+    if (this.currentCount === null) {
+      this.currentCount = count;
+      return this.currentCount;
+    }
+
+    // if (this.currentCount === count) {
+    // this.currentCount -= 1;
+    // return this.currentCount;
+    // }
+
+    if (this.currentCount <= count && this.currentCount > 0) {
+      this.currentCount -= 1;
+      return this.currentCount;
+    } else if (this.currentCount === 0) {
+      return this.currentCount;
+    }
+
     // ✨ implement
   }
 }
@@ -76,6 +107,12 @@ class Seasons {
    */
   constructor() {
     // ✨ initialize whatever properties are needed
+    this.summer = "summer";
+    this.fall = "fall";
+    this.winter = "winter";
+    this.spring = "spring";
+
+    this.call = 0;
   }
 
   /**
@@ -91,6 +128,17 @@ class Seasons {
    * seasons.next() // returns "summer"
    */
   next() {
+    this.call++;
+    if (this.call === 1) {
+      return this.summer;
+    } else if (this.call === 2) {
+      return this.fall;
+    } else if (this.call === 3) {
+      return this.winter;
+    } else if (this.call === 4) {
+      this.call = 0;
+      return this.spring;
+    }
     // ✨ implement
   }
 }
